@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>How to Deduplicate a Contact CSV Safely and Offline</title>
+  <meta name="description" content="A safe workflow for removing duplicate contacts from CSV files using normalized email and phone values without uploading private contact data.">
+  <link rel="canonical" href="https://droy37-tools.github.io/guides/deduplicate-contact-csv/">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="site-header"><a class="brand" href="/"><img src="https://github.com/Droy37-Tools.png?size=96" width="40" height="40" alt=""><span>Droy37 Tools</span></a><nav aria-label="Primary"><a href="/#guides">Guides</a><a href="https://github.com/Droy37-Tools">GitHub</a></nav></header>
+  <main class="article wrap">
+    <div class="breadcrumbs"><a href="/">Droy37 Tools</a> / Guides</div>
+    <h1>How to deduplicate a contact CSV safely</h1>
+    <p class="lede">Names are weak identifiers. Exact normalized email addresses and phone numbers are safer starting points for finding duplicates, especially when two partial records need to be combined.</p>
+    <div class="answer"><strong>Quick answer:</strong> keep the original file, normalize email and phone values, merge only exact identifier matches, fill blanks without overwriting populated fields, and review the result before importing it.</div>
+
+    <h2>Why matching names is risky</h2>
+    <p>Two people can share a name, and one person can appear under several spellings. Initials, nicknames, reordered family names, and non-Latin scripts make fuzzy name matching useful for review but unsafe for automatic merging. A confident automated merge should begin with a stronger identifier.</p>
+
+    <h2>Normalize before comparing</h2>
+    <h3>Email addresses</h3>
+    <p>Trim surrounding spaces and compare addresses without case differences. Do not automatically rewrite the local part, remove dots, or strip plus tags: those transformations are provider-specific and can join records that should remain separate.</p>
+    <h3>Phone numbers</h3>
+    <p>Remove display punctuation such as spaces, parentheses, and hyphens while preserving an international <code>+</code> prefix. Avoid guessing country codes. Two local-looking numbers from different countries may otherwise collapse into one value.</p>
+
+    <h2>Merge conservatively</h2>
+    <p>When two rows share an exact normalized email or phone number, retain one row and use the other only to fill blank fields. If both rows contain different non-empty values for the same field, keep the preferred source or flag the conflict for review rather than silently overwriting it.</p>
+
+    <h2>Protect the data during cleanup</h2>
+    <ul>
+      <li>Work from a copy and keep the original export unchanged.</li>
+      <li>Use synthetic records when testing a new tool.</li>
+      <li>Avoid uploading customer or personal contact lists to an unknown service.</li>
+      <li>Inspect the output before deleting or replacing records in the destination app.</li>
+      <li>Import a small sample before committing to the full migration.</li>
+    </ul>
+
+    <h2>What destination apps can—and cannot—do</h2>
+    <p>Google Contacts includes a Merge &amp; fix feature after contacts are in the account, while Outlook provides duplicate-handling choices during some import flows. Those features are useful, but they happen at or after import. Cleaning the file first gives you a reviewable output and reduces the chance of multiplying existing duplicates.</p>
+    <div class="note"><strong>Official references:</strong> Google explains its account-level <a href="https://support.google.com/contacts/answer/7078226">Merge &amp; fix</a> feature, and Microsoft documents Outlook's <a href="https://support.microsoft.com/en-us/outlook/people/import-or-export-contacts-in-outlook-using-a-csv-file">duplicate import options</a>.</div>
+
+    <h2>Try it without uploading the file</h2>
+    <p>Contact CSV Doctor Lite performs exact normalized email and phone matching in browser memory. It can clean and deduplicate up to 25 contacts, which is enough to validate the workflow safely with a representative sample.</p>
+    <a class="button primary" href="https://droy37-tools.github.io/contact-csv-doctor/lite/">Try the free Lite edition</a>
+  </main>
+  <footer><div class="wrap"><span>© 2026 Droy37 Tools</span><a href="/">Home</a></div></footer>
+</body>
+</html>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://droy37-tools.github.io/sitemap.xml

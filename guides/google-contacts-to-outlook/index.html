@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Move Google Contacts to Outlook with a Clean CSV</title>
+  <meta name="description" content="A careful Google Contacts to Outlook migration workflow: export, preserve the original, inspect headers and encoding, clean duplicates, and test the import.">
+  <link rel="canonical" href="https://droy37-tools.github.io/guides/google-contacts-to-outlook/">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="site-header"><a class="brand" href="/"><img src="https://github.com/Droy37-Tools.png?size=96" width="40" height="40" alt=""><span>Droy37 Tools</span></a><nav aria-label="Primary"><a href="/#guides">Guides</a><a href="https://github.com/Droy37-Tools">GitHub</a></nav></header>
+  <main class="article wrap">
+    <div class="breadcrumbs"><a href="/">Droy37 Tools</a> / Guides</div>
+    <h1>Move Google Contacts to Outlook with a clean CSV</h1>
+    <p class="lede">A contact migration is safer as a staged process: export, preserve, inspect, clean, test, and only then import the complete list.</p>
+    <div class="answer"><strong>Quick answer:</strong> export your Google contacts as CSV, keep that export unchanged, make a cleaning copy, verify UTF-8 and field structure, remove exact duplicates, then test a handful of contacts in Outlook before importing everything.</div>
+
+    <h2>1. Export the intended contacts</h2>
+    <p>In Google Contacts, select the contacts or label you intend to move and export them as CSV. Record what you selected so you can reproduce the export. If the account contains automatically collected addresses, decide whether those belong in the migration.</p>
+
+    <h2>2. Keep an untouched source export</h2>
+    <p>Do not edit the only export. Store it as a rollback copy and duplicate it for cleaning. This matters because spreadsheet applications may reinterpret phone numbers, dates, leading zeros, and long numeric values as soon as the file is opened.</p>
+
+    <h2>3. Inspect fields and encoding</h2>
+    <p>Confirm that the first row contains headings and that names with accents or non-Latin characters display correctly. Outlook recommends UTF-8 for multilingual contacts. If a row contains a comma inside an address or note, it should be properly quoted so it does not shift the remaining fields.</p>
+
+    <h2>4. Reduce duplicate risk before importing</h2>
+    <p>Repeated migrations are a common source of duplicates. Normalize email addresses and phone punctuation, then merge only exact identifier matches. Preserve conflicting non-empty fields for review. Google Contacts can merge duplicates within one account, but it cannot merge contacts saved in different Google accounts.</p>
+
+    <h2>5. Match the Outlook workflow</h2>
+    <p>Classic Outlook lets you map source fields and choose whether to replace, allow, or skip duplicates. New Outlook has a simpler CSV import flow. In either case, review the preview and confirm that name, email, phone, company, and notes land where expected.</p>
+
+    <h2>6. Test before the full import</h2>
+    <p>Use a small file containing the header and several representative contacts. Include a non-English name, an international phone number, a postal address with commas, and a record that might duplicate an existing Outlook contact. Inspect the imported results before processing the full list.</p>
+
+    <div class="note"><strong>Official references:</strong> See Google's instructions for <a href="https://support.google.com/contacts/answer/7199294">exporting contacts</a>, its <a href="https://support.google.com/contacts/answer/7078226">duplicate merge limits</a>, and Microsoft's <a href="https://support.microsoft.com/en-us/outlook/people/import-or-export-contacts-in-outlook-using-a-csv-file">Outlook CSV import guidance</a>.</div>
+
+    <h2>Validate the cleanup with a local tool</h2>
+    <p>Contact CSV Doctor Lite recognizes common Google and Outlook contact fields, handles comma, semicolon, and tab delimiters, normalizes common values, and merges exact matches. It processes up to 25 contacts locally so you can validate a sample without uploading it.</p>
+    <a class="button primary" href="https://droy37-tools.github.io/contact-csv-doctor/lite/">Try the free Lite edition</a>
+  </main>
+  <footer><div class="wrap"><span>© 2026 Droy37 Tools</span><a href="/">Home</a></div></footer>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>How to Fix Outlook Contact CSV Import Errors</title>
+  <meta name="description" content="A practical checklist for Outlook contact CSV import errors: UTF-8 encoding, headers, delimiters, malformed rows, missing fields, and duplicates.">
+  <link rel="canonical" href="https://droy37-tools.github.io/guides/fix-outlook-csv-import-errors/">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="site-header"><a class="brand" href="/"><img src="https://github.com/Droy37-Tools.png?size=96" width="40" height="40" alt=""><span>Droy37 Tools</span></a><nav aria-label="Primary"><a href="/#guides">Guides</a><a href="https://github.com/Droy37-Tools">GitHub</a></nav></header>
+  <main class="article wrap">
+    <div class="breadcrumbs"><a href="/">Droy37 Tools</a> / Guides</div>
+    <h1>How to fix Outlook contact CSV import errors</h1>
+    <p class="lede">Most failed contact imports come down to encoding, column headings, delimiters, or one malformed row. Work on a copy, test with a few contacts, and keep the original export untouched.</p>
+    <div class="answer"><strong>Quick answer:</strong> save the file as UTF-8 CSV, keep one header row, confirm every data row has the same column structure, then run a small test import before importing the full list.</div>
+
+    <h2>1. Preserve the original</h2>
+    <p>Duplicate the exported file before editing it. Contact migrations are easier to recover when the source export remains unchanged. Give the working copy a clear name such as <code>contacts-cleaning-copy.csv</code>.</p>
+
+    <h2>2. Check the encoding</h2>
+    <p>Microsoft recommends UTF-8 because it works across languages and alphabets. If names appear as question marks, diamonds, or other unexpected characters in Outlook's preview, cancel the import and convert the file to UTF-8 first.</p>
+    <p>In Excel, import the file with <em>Data → From Text/CSV</em>, choose the encoding that displays the names correctly, and save a new copy as <em>CSV UTF-8 (Comma delimited)</em>. Do not overwrite the only copy of your source export.</p>
+
+    <h2>3. Keep the header row</h2>
+    <p>Outlook expects column headings in the first row. Missing, duplicated, or unfamiliar headings can leave fields blank or place data in the wrong destination. Typical contact columns include a name, email address, phone number, company, and notes. Classic Outlook can map source fields during its import wizard; the current Outlook workflow is less forgiving, so a clean header row matters.</p>
+
+    <h2>4. Confirm the delimiter and row structure</h2>
+    <p>A file may end in <code>.csv</code> but use semicolons or tabs instead of commas. That can make the whole row appear in one column. Quoted commas inside addresses and notes must also be balanced. If the import stops after a specific contact, inspect that row for an unmatched quote or an unexpected line break.</p>
+
+    <h2>5. Choose a duplicate policy deliberately</h2>
+    <p>Classic Outlook offers three choices: replace duplicates, allow duplicates, or skip duplicate items. None of them can reliably infer which partial record is better in every case. Clean exact duplicates before importing, then choose the Outlook option that matches the quality of your source file.</p>
+
+    <h2>6. Test a small sample</h2>
+    <p>Create a copy containing the header and a few representative contacts: one with an international phone number, one with non-English characters, and one with multiple populated fields. Import that sample, inspect the results, delete the test contacts if necessary, and only then import the full file.</p>
+
+    <div class="note"><strong>Official references:</strong> Microsoft documents the UTF-8 requirement, duplicate options, missing-field checks, and malformed-row failures in its <a href="https://support.microsoft.com/en-us/outlook/people/import-or-export-contacts-in-outlook-using-a-csv-file">contact import guide</a> and <a href="https://support.microsoft.com/en-us/outlook/fix-problems-importing-contacts-to-outlook">troubleshooting guide</a>.</div>
+
+    <h2>Clean a sample locally</h2>
+    <p>Contact CSV Doctor Lite detects comma, semicolon, and tab delimiters, recognizes common English and Simplified Chinese contact fields, normalizes email and phone formatting, and merges exact matches by normalized email or phone. Processing happens in your browser; the file is not uploaded.</p>
+    <a class="button primary" href="https://droy37-tools.github.io/contact-csv-doctor/lite/">Try the free Lite edition</a>
+  </main>
+  <footer><div class="wrap"><span>© 2026 Droy37 Tools</span><a href="/">Home</a></div></footer>
+</body>
+</html>
