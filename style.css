@@ -15,30 +15,36 @@
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
+  position: relative;
+  isolation: isolate;
   margin: 0;
   overflow-x: hidden;
   color: var(--text);
-  background:
-    radial-gradient(circle at 90% 4%, rgba(237, 112, 77, .1), transparent 28rem),
-    radial-gradient(circle at 8% 34%, rgba(87, 151, 123, .09), transparent 25rem),
-    var(--bg);
+  background: var(--bg);
   font: 16px/1.65 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+body::before {
+  content: "";
+  position: fixed;
+  z-index: -1;
+  inset: 0;
+  background:
+    radial-gradient(circle at 90% 4%, rgba(237, 112, 77, .08), transparent 46rem),
+    radial-gradient(circle at 8% 88%, rgba(87, 151, 123, .07), transparent 42rem),
+    var(--bg);
+  pointer-events: none;
 }
 a { color: inherit; }
 .wrap { width: min(var(--max), calc(100% - 40px)); margin-inline: auto; }
 
 .site-header {
-  position: sticky;
-  z-index: 10;
-  top: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
   height: 76px;
   padding-inline: max(16px, calc((100% - 1180px) / 2));
-  background: rgba(245, 247, 243, .86);
-  backdrop-filter: blur(16px);
+  background: transparent;
 }
 .brand { display: flex; align-items: center; gap: 12px; color: var(--ink); font-weight: 780; text-decoration: none; }
 .brand img { border-radius: 12px; }
